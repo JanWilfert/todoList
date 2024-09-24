@@ -1,12 +1,17 @@
-<div class="task-item">
-    <input type="checkbox" [checked]="task.completed" (change)="onToggleCompleted()">
-  
-    <span *ngIf="!isEditing" [class.completed]="task.completed">{{ task.description }}</span>
-  
-    <input *ngIf="isEditing" type="text" [(ngModel)]="editedDescription">
-  
-    <button *ngIf="isEditing" (click)="onSaveEdit()">Speichern</button>
-    <button *ngIf="isEditing" (click)="onCancelEdit()">Abbrechen</button>
-    <button *ngIf="!isEditing" (click)="onStartEdit()">Bearbeiten</button>
+<div class="taskContainer">
+  <mat-checkbox [checked]="task.completed" (change)="onToggleCompleted()"></mat-checkbox>
+  <div class="task-item" (click)="onStartEdit()" *ngIf="!isEditing">
+    <span [class.completed]="task.completed">{{ task.description }}</span>
   </div>
-  
+
+  <div class="task-item" *ngIf="isEditing"> 
+    <!--change to mat input-->
+    <input type="text" [(ngModel)]="editedDescription" (blur)="onSaveEdit()" (keyup.enter)="onSaveEdit()" (keyup.escape)="onCancelEdit()" autofocus> 
+    <button mat-icon-button (click)="onSaveEdit()">
+        <mat-icon>save</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onCancelEdit()">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</div>
+</div>

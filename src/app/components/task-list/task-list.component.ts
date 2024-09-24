@@ -3,11 +3,12 @@ import { Task } from '../../interfaces/Task';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../../material.module';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TaskItemComponent],
+  imports: [CommonModule, FormsModule, TaskItemComponent, MaterialModule],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })

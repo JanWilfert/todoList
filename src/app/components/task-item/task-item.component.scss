@@ -1,9 +1,27 @@
 .task-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  
-    .completed {
-      text-decoration: line-through;
-    }
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  span, input {
+    margin-left: 10px;
   }
+
+  .completed {
+    text-decoration: line-through;
+  }
+
+}
+.taskContainer {
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 13px;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}

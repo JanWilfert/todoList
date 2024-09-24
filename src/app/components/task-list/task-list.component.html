@@ -1,23 +1,21 @@
 <div class="task-list">
+  <mat-form-field appearance="outline">
+    <mat-label>Aufgabe hinzufügen</mat-label>
+    <input matInput type="text" [(ngModel)]="newTaskDescription" placeholder="Aufgabe hinzufügen">
+    <button mat-icon-button matSuffix aria-label="Add" (click)="addTask()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
 
-  <input type="text" [(ngModel)]="newTaskDescription" placeholder="Neue Aufgabe hinzufügen">
-  <button (click)="addTask()">Hinzufügen</button>
+  <mat-button-toggle-group aria-label="Filter auswählen" [(ngModel)]="filter" class="filter-group" appearance="standard" [hideSingleSelectionIndicator]="true">
+    <mat-button-toggle value="all">Alle</mat-button-toggle>
+    <mat-button-toggle value="active">Aktiv</mat-button-toggle>
+    <mat-button-toggle value="completed">Erledigt</mat-button-toggle>
+  </mat-button-toggle-group>
 
-  <div>
-    <label>
-      <input type="radio" name="filter" value="all" [(ngModel)]="filter"> Alle
-    </label>
-    <label>
-      <input type="radio" name="filter" value="active" [(ngModel)]="filter"> Aktiv
-    </label>
-    <label>
-      <input type="radio" name="filter" value="completed" [(ngModel)]="filter"> Erledigt
-    </label>
-  </div>
-
-  <ul>
-    <li *ngFor="let task of filteredTasks">
+  <mat-list>
+    <mat-list-item *ngFor="let task of filteredTasks" style="padding: 0; margin-bottom: 7px;" >
       <app-task-item [task]="task"></app-task-item>
-    </li>
-  </ul>
+    </mat-list-item>
+  </mat-list>
 </div>
